@@ -1,12 +1,14 @@
 <?php
 
-require_once __DIR__ . '/models/photo.php';
+require_once __DIR__ . '/autoload.php';
 
-$items = photo_getAll();
+$contr = isset($_GET['contr']) ? $_GET['contr'] : 'News';
+$act = isset($_GET['act']) ? $_GET['act'] : 'All';
 
-require_once __DIR__ . '/views/index.php';
-
-//var_dump($items);
+$controllerClassName = $contr . 'Controller';
+$controller = new $controllerClassName;
+$method = 'action' . $act; 
+$controller->$method();
 
 // git clone - клонирование
 // git add - добавить файл под контроль git'a

@@ -9,11 +9,6 @@ class NewsController {
 //        $view->assign('items', $news);
         $view->items = $news;
         
-        foreach ($view as $k => $v) {
-            echo $k;
-        }
-        die;
-        
         $view->display('news/all.php');
     }
 

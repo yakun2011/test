@@ -1,12 +1,20 @@
 <?php
 
-class View {
+class View implements Iterator {
         
     protected $data = [];
     
-    public function assign($name, $value) {
-        
-        $this->data[$name] = $value;
+//    public function assign($name, $value) {
+//        
+//        $this->data[$name] = $value;
+//    }
+    
+    public function __set($k, $v) {
+        $this->data[$k] = $v;
+    }
+
+    public function __get($k) {
+        return $this->data[$k];
     }
     
     public function display($template) {
@@ -18,5 +26,4 @@ class View {
         include __DIR__ . '/../views/' . $template;
         
     }
-
 }

@@ -4,11 +4,18 @@ require_once __DIR__ . '/autoload.php';
 
 $contr = isset($_GET['contr']) ? $_GET['contr'] : 'News';
 $act = isset($_GET['act']) ? $_GET['act'] : 'All';
-
 $controllerClassName = $contr . 'Controller';
-$controller = new $controllerClassName;
-$method = 'action' . $act; 
-$controller->$method();
+
+try {
+    $controller = new $controllerClassName;
+    $method = 'action' . $act;
+    $controller->$method();
+
+} catch (ModelException $e) {
+    $view = new View();
+    $view->error = $e->getMessage();
+    $view->display('error.php');
+}
 
 // git clone - клонирование
 // git add - добавить файл под контроль git'a

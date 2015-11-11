@@ -3,11 +3,8 @@
 class NewsController {
     
     public function actionAll(){
-        
-        $article = new NewsModel();
-        $article->title = 'Привет';
-        $article->text = 'Привет, МИР!';
-        $article->insert();
+
+        $article = NewsModel::findOneByColumn('title', 'Здравствуйте!');
         
 //        $news = News::getAll();
 //        $view = new View();

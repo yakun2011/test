@@ -1,10 +1,12 @@
 <?php
 
+use App\Models\News;
+
 class NewsController {
     
     public function actionAll(){
 
-        $article = NewsModel::findOneByColumn('title', 'Здравствуйте!');
+        $article = News::findOneByColumn('title', 'Здравствуйте!');
         
 //        $news = News::getAll();
 //        $view = new View();
